@@ -1,0 +1,73 @@
+[
+    {
+      "name": "John Doe",
+      "dateOfBirth": "1985-03-15",
+      "joiningDate": "2018-07-20",
+      "contractExpiryDate": "2023-07-20",
+      "designation": "Software Engineer",
+      "experience": "8 years",
+      "email": "john.doe@example.com",
+      "id": "EMP001",
+      "nickname": "JD",
+      "image": "https://i.ibb.co/gy9kpJk/user-1.png",
+      "phoneNumber": "+1 (555) 123-4567",
+      "address": "123 Main Street, Cityville, State",
+      "salary": 85000,
+      "verified": false,
+      "bankAccount": "123456789"
+    },
+    {
+      "name": "Jane Smith",
+      "dateOfBirth": "1990-09-28",
+      "joiningDate": "2019-04-10",
+      "contractExpiryDate": "2024-04-10",
+      "designation": "Marketing Specialist",
+      "experience": "6 years",
+      "email": "jane.smith@example.com",
+      "id": "EMP002",
+      "nickname": "JS",
+      "image": "https://i.ibb.co/XXmxBSL/member2.png",
+      "phoneNumber": "+1 (555) 967-6543",
+      "address": "456 Oak Avenue, Townsville, State",
+      "salary": 72000,
+      "verified": false,
+      "bankAccount": "987654321"
+    }
+    ,
+    {
+      "name": "Dine Smith",
+      "dateOfBirth": "1990-09-28",
+      "joiningDate": "2019-04-10",
+      "contractExpiryDate": "2024-04-10",
+      "designation": "Marketing Specialist",
+      "experience": "6 years",
+      "email": "dine.smith@example.com",
+      "id": "EMP002",
+      "nickname": "JS",
+      "image": "https://i.ibb.co/XXmxBSL/member2.png",
+      "phoneNumber": "+1 (555) 987-5663",
+      "address": "456 Oak Avenue, Townsville, State",
+      "salary": 72000,
+      "verified": false,
+      "bankAccount": "987654321"
+    }
+    ,
+    {
+      "name": "Jane Foster",
+      "dateOfBirth": "1990-09-28",
+      "joiningDate": "2019-04-10",
+      "contractExpiryDate": "2024-04-10",
+      "designation": "Marketing Specialist",
+      "experience": "6 years",
+      "email": "jane.foster@example.com",
+      "id": "EMP002",
+      "nickname": "JS",
+      "image": "https://i.ibb.co/XXmxBSL/member2.png",
+      "phoneNumber": "+1 (555) 987-6543",
+      "address": "456 Oak Avenue, Townsville, State",
+      "salary": 72000,
+      "verified": false,
+      "bankAccount": "987654321"
+    }
+    
+  ]
