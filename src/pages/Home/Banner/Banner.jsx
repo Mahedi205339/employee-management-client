@@ -8,7 +8,7 @@ const Banner = () => {
             <div id="slide1" className="carousel-item relative   w-full h-[80vh] ">
                 <img src={banner1} className="w-full rounded-xl object-fill" />
                 <div className="absolute h-full flex  bottom-0 items-center bg-gradient-to-r from-[#151515] to-[rgba(21,21,21,0)]">
-                    <div className="text-white md:w-1/2  pl-10  md:pl-14 lg:pl-24 ">
+                    <div data-aos="fade-up"  data-aos-duration="3000" className="text-white md:w-1/2  pl-10  md:pl-14 lg:pl-24 ">
                         <h1 className="mb-5 text-2xl md:text-4xl lg:text-5xl font-bold">
                             Employee
                             <span className="text-cyan-600 ml-2">
