@@ -6,31 +6,42 @@ import logo from '../../../assets/logo.png'
 import { NavLink } from "react-router-dom";
 import { IoHome, } from "react-icons/io5";
 import { MdDashboard, MdPermContactCalendar } from "react-icons/md";
-
+import { FaWpforms } from "react-icons/fa6";
 
 
 
 const Navbar = () => {
 
   const navLinks = <>
-    <li>< NavLink
-      className={({ isActive }) =>
+    <li>
+      < NavLink className={({ isActive }) =>
         isActive ? 'bg-blue-800 text-white' : ''
       }
-      to="/">
+        to="/">
         <IoHome></IoHome>
-        Home</NavLink></li>
-    <li><NavLink className={({ isActive }) =>
-      isActive ? 'bg-blue-800 text-white' : ''
-    } to="/contactUs">
-      <MdPermContactCalendar></MdPermContactCalendar>
-
-      Contact us</NavLink></li>
-    <li><NavLink className={({ isActive }) =>
-      isActive ? 'bg-blue-800 text-white' : ''
-    } to="/dashboard">
-      <MdDashboard />
-      Dashboard</NavLink></li>
+        Home</NavLink>
+    </li>
+    <li>
+      <NavLink className={({ isActive }) =>
+        isActive ? 'bg-blue-800 text-white' : ''
+      } to="/contactUs">
+        <MdPermContactCalendar></MdPermContactCalendar>
+        Contact us</NavLink>
+    </li>
+    <li>
+      <NavLink className={({ isActive }) =>
+        isActive ? 'bg-blue-800 text-white' : ''
+      } to="/dashboard">
+        <MdDashboard />
+        Dashboard</NavLink>
+    </li>
+    <li>
+      <NavLink className={({ isActive }) =>
+        isActive ? 'bg-blue-800 text-white' : ''
+      } to="/registration">
+        <FaWpforms />
+        Registration</NavLink>
+    </li>
 
 
   </>
@@ -70,7 +81,7 @@ const Navbar = () => {
             } to="/login">Login</NavLink></li>
             <li><NavLink className={({ isActive }) =>
               isActive ? 'bg-blue-800 text-white' : ''
-            } to="/register">Register</NavLink></li>
+            } to="/signUp">Sign Up</NavLink></li>
           </ul>
         </div>
       </div>

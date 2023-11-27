@@ -5,6 +5,8 @@ import Login from "../pages/Login/Login";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Layout from "../layout/Layout";
 import DashboardLayout from "../layout/DashboardLayout/DashboardLayout";
+import Registration from "../pages/Registration/Registration";
+import AllEmployee from "../pages/dashboard/AllEmployee/AllEmployee";
 
 const router = createBrowserRouter([
     {
@@ -12,13 +14,17 @@ const router = createBrowserRouter([
         element: <Layout></Layout>,
         children: [
             {
-                path:'/',
-                element:<Home></Home>
+                path: '/',
+                element: <Home></Home>
             }
             ,
             {
-                path:'/contactUs',
-                element:<ContactUs></ContactUs>
+                path: '/contactUs',
+                element: <ContactUs></ContactUs>
+            },
+            {
+                path: '/registration',
+                element: <Registration></Registration>
             }
         ]
     }
@@ -28,15 +34,16 @@ const router = createBrowserRouter([
     }
     ,
     {
-        path: '/register',
+        path: '/signUP',
         element: <SignUp></SignUp>
     },
     {
-        path:'/dashboard',
-        element:<DashboardLayout></DashboardLayout>,
-        children:[
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
             {
-
+                path: '/dashboard/allEmployee',
+                element: <AllEmployee></AllEmployee>
             }
         ]
     }

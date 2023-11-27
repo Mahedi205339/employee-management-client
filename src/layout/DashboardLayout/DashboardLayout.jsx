@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import DropdownMenu from "../../pages/Home/Navbar/DropdownMenu";
 import logo from '../../assets/logo.png'
@@ -14,6 +14,15 @@ const DashboardLayout = () => {
                 to="/">
                 <IoHome></IoHome>
                 Home</NavLink>
+        </li>
+        <li>
+            < NavLink
+                className={({ isActive }) =>
+                    isActive ? 'bg-blue-800 text-white' : ''
+                }
+                to="/dashboard/allEmployee">
+                <IoHome></IoHome>
+                All Employee</NavLink>
         </li>
 
 
@@ -57,6 +66,9 @@ const DashboardLayout = () => {
                         } to="/signup">SignUp</NavLink></li>
                     </ul>
                 </div>
+            </div>
+            <div className="mt-6">
+                <Outlet></Outlet>
             </div>
         </Container>
     )

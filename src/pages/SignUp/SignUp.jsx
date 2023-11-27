@@ -19,20 +19,19 @@ const SignUp = () => {
         event.preventDefault()
         const form = event.target
         const name = form.name.value;
-        const role = form.role.value;
         const email = form.email.value;
-        const salary = form.salary.value;
         const password = form.password.value;
         const image = form.image.files[0]
-        console.log(role, name, email, salary, image)
+        console.log(name, email, image)
 
         try {
             const imageData = await uploadImage(image)
             const result = await createUser(email, password)
             console.log(result.user)
             await updateUserProfile(name, imageData?.data?.display_url)
-            const userInfo = { name, email
-                //  image:imageData.data.display_url
+            const userInfo = {
+                name, email,
+                image: imageData.data.display_url
             }
             console.log(userInfo)
             axiosPublic.post('/users', userInfo)
@@ -52,13 +51,14 @@ const SignUp = () => {
             navigate("/")
         }
         catch (err) {
-            Swal.fire({
-                position: "center",
-                icon: "error",
-                title:'error',
-                showConfirmButton: false,
-                timer: 1500
-            });
+            // Swal.fire({
+            //     position: "center",
+            //     icon: err.message,
+            //     title: 'error',
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // });
+            console.log(err)
         }
 
     }
@@ -68,7 +68,7 @@ const SignUp = () => {
 
 
     return (
-        <div className="sign-back hero ">
+        <div className="sign-back hero p-6">
             <Helmet>
                 <title> | SignUp</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
@@ -76,7 +76,7 @@ const SignUp = () => {
             <div className="hero-content flex flex-col md:flex-row">
                 <div className="card flex-shrink-0 w-full  max-w-lg">
                     <div className='text-center text-2xl md:text-4xl font-bold lg:my-12'>
-                        Registration
+                        Sign Up
 
                     </div>
                     <form
@@ -112,20 +112,7 @@ const SignUp = () => {
                                     data-temp-mail-org='0'
                                 />
                             </div>
-                            {/* <div>
-                                <label htmlFor='salary' className='block mb-2 text-sm'>
-                                    Salary
-                                </label>
-                                <input
-                                    type='number'
-                                    name='salary'
-                                    id='salary'
-                                    required
-                                    placeholder='Enter Salary'
-                                    className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
-                                    data-temp-mail-org='0'
-                                />
-                            </div> */}
+
                             <div>
                                 <div className='flex justify-between'>
                                     <label htmlFor='password' className='text-sm mb-2'>
@@ -142,23 +129,13 @@ const SignUp = () => {
                                     className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-cyan-500 bg-gray-200 text-gray-900'
                                 />
                             </div>
-                            {/* <div className="">
-                                <label className="label">
-                                    <span className="label-text"> Login Role</span>
-                                </label>
-                                <select defaultValue="default" className="select select-bordered w-full " name='role'>
-                                    <option value="default" disabled  >Select a role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="HR">HR</option>
-                                    <option value="employee">Employee</option>
 
-                                </select>
-                            </div> */}
                             <div>
                                 <label htmlFor='image' className='block mb-2 text-sm'>
                                     Select Image:
                                 </label>
                                 <input
+                                    className="outline bg-black py-2 rounded-lg text-white"
                                     required
                                     type='file'
                                     id='image'
