@@ -1,18 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import AllEmployeeChart from "./AllEmployeeChart";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllEmployee = () => {
-    const axiosPublic = useAxiosPublic()
+    // const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
 
-    const { data: employees = [] ,refetch } = useQuery({
+    const { data: employees = [], refetch } = useQuery({
         queryKey: ['employees'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/employee`)
+            const res = await axiosSecure.get(`/employee`)
             return res.data;
         }
     })
+
+
+    const handleVerify = id => {
+        axiosSecure.patch(`/employee/${id}`, { verified: true })
+            .then(res => {
+                console.log(res.data)
+            })
+        refetch()
+
+    }
 
     // console.log(employees)
     return (
@@ -25,7 +37,7 @@ const AllEmployee = () => {
                 {
                     employees?.map(employee => <AllEmployeeChart employee={employee}
                         key={employee._id}
-                        refetch={refetch}
+                        handleVerify={handleVerify}
                     ></AllEmployeeChart>)
                 }
 

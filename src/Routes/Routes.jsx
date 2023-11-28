@@ -7,6 +7,7 @@ import Layout from "../layout/Layout";
 import DashboardLayout from "../layout/DashboardLayout/DashboardLayout";
 import Registration from "../pages/Registration/Registration";
 import AllEmployee from "../pages/dashboard/AllEmployee/AllEmployee";
+import WorkShitEmployee from "../pages/dashboard/WorkShitEmployee/WorkShitEmployee";
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/allEmployee',
                 element: <AllEmployee></AllEmployee>
+            }
+            ,
+            {
+                path:'/dashboard/work-shitForm',
+                element:<WorkShitEmployee></WorkShitEmployee>
             }
         ]
     }

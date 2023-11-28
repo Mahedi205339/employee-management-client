@@ -7,13 +7,13 @@ import SocialLogin from '../../components/SocialLogin/SocialLogin';
 import useAuth from '../../hooks/useAuth';
 import { Helmet } from 'react-helmet';
 import { uploadImage } from '../../api/utils';
-// import { useState } from 'react';
+import { useState } from 'react';
 
 const SignUp = () => {
     const axiosPublic = useAxiosPublic()
     const { createUser, updateUserProfile } = useAuth()
     const navigate = useNavigate()
-    // const [error, setError] = useState("")
+    const [error, setError] = useState("")
 
     const handleSubmit = async event => {
         event.preventDefault()
@@ -23,6 +23,10 @@ const SignUp = () => {
         const password = form.password.value;
         const image = form.image.files[0]
         console.log(name, email, image)
+        if (!/[A-Z].{7}$/.test(password)) {
+            setError('Your password should have contain at least 8 character  Capital letter ')
+            return
+        }
 
         try {
             const imageData = await uploadImage(image)
@@ -48,17 +52,18 @@ const SignUp = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
+            setError('');
             navigate("/")
         }
         catch (err) {
-            // Swal.fire({
-            //     position: "center",
-            //     icon: err.message,
-            //     title: 'error',
-            //     showConfirmButton: false,
-            //     timer: 1500
-            // });
             console.log(err)
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: { error },
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
 
     }
@@ -73,12 +78,17 @@ const SignUp = () => {
                 <title> | SignUp</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
+
             <div className="hero-content flex flex-col md:flex-row">
+
                 <div className="card flex-shrink-0 w-full  max-w-lg">
                     <div className='text-center text-2xl md:text-4xl font-bold lg:my-12'>
                         Sign Up
-
+                       
                     </div>
+                     {
+                            error && < p className="text-red-600 font-bold ">{error}</p>
+                        }
                     <form
                         onSubmit={handleSubmit}
                         className='space-y-6 ng-untouched ng-pristine ng-valid'

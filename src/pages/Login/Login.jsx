@@ -7,8 +7,10 @@ import useAuth from '../../hooks/useAuth';
 import { Helmet } from 'react-helmet';
 import Lottie from 'lottie-react';
 import loginAnime from '../../assets/Animation -login.json'
+import { useState } from 'react';
 
 const Login = () => {
+    const [error, setError] = useState("")
     const { signIn } = useAuth()
     const navigate = useNavigate();
     const location = useLocation()
@@ -18,6 +20,11 @@ const Login = () => {
         const form = event.target
         const email = form.email.value;
         const password = form.password.value;
+        if (!/[A-Z].{7}$/.test(password)) {
+            setError('Your password should have contain at least 8 character  Capital letter ')
+            return
+        }
+        console.log(email, password)
         signIn(email, password)
             .then(result => {
                 const user = result.user;
@@ -40,10 +47,12 @@ const Login = () => {
 
     return (
         <div className="sign-back hero min-h-screen ">
+
             <Helmet>
                 <title> | Login</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
+
             <div className="hero-content flex flex-col md:flex-row">
                 <div className="text-center md:w-1/2 lg:text-left">
                     <Lottie animationData={loginAnime}></Lottie>
@@ -53,6 +62,9 @@ const Login = () => {
 
                         Log In
                     </div>
+                    {
+                        error && < p className="text-red-600 font-bold ">{error}</p>
+                    }
                     <form
                         onSubmit={handleSubmit}
                         className='space-y-6 ng-untouched ng-pristine ng-valid'

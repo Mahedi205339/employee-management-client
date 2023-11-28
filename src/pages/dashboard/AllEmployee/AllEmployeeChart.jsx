@@ -1,22 +1,14 @@
 import { ImUserCheck } from "react-icons/im";
 import { FaUserTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 // import Swal from "sweetalert2";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
 // import axios from "axios";
-const AllEmployeeChart = ({ employee, refetch }) => {
+const AllEmployeeChart = ({ employee, handleVerify }) => {
 
     const { email, name, salary, image, verified, designation, accountNumber, _id } = employee
     // console.log(employee)\\
 
-    const axiosPublic = useAxiosPublic()
-    const handleVerify = id => {
-        axiosPublic.patch(`employee/${id}`)
-            .then(res => {
-                console.log(res.data)
-            })
-        refetch()
 
-    }
     return (
         <div className="card card-side p-6 sm:p-0 object-cover">
             <div className="w-32">
@@ -32,7 +24,7 @@ const AllEmployeeChart = ({ employee, refetch }) => {
                 </p>
                 <p>Role:{designation}</p>
                 <p>Account No:{accountNumber}</p>
-                <div className="card-actions justify-end">
+                <div className="card-actions  justify-end">
                     {
                         verified ?
                             <>
@@ -47,6 +39,11 @@ const AllEmployeeChart = ({ employee, refetch }) => {
                                 </button>
                             </>
                     }
+                    <Link to={`employeeDetails/${_id}`}>
+                        <button className=" bg-cyan-600 flex items-center text-white font-bold gap-1 px-2 py-1 rounded">
+                            Details
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

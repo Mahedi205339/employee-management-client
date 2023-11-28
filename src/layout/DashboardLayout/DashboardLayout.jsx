@@ -3,7 +3,7 @@ import Container from "../../components/Container/Container";
 import DropdownMenu from "../../pages/Home/Navbar/DropdownMenu";
 import logo from '../../assets/logo.png'
 import { IoHome } from "react-icons/io5";
-
+import { FaWpforms } from "react-icons/fa";
 const DashboardLayout = () => {
     const navLinks = <>
         <li>
@@ -23,6 +23,15 @@ const DashboardLayout = () => {
                 to="/dashboard/allEmployee">
                 <IoHome></IoHome>
                 All Employee</NavLink>
+        </li>
+        <li>
+            < NavLink
+                className={({ isActive }) =>
+                    isActive ? 'bg-blue-800 text-white' : ''
+                }
+                to="/dashboard/work-shitForm">
+                <FaWpforms></FaWpforms>
+                Work Shit</NavLink>
         </li>
 
 

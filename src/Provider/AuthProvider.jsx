@@ -9,13 +9,14 @@ import {
     updateProfile
 } from "firebase/auth"
 import app from "../firebase/firebase.config";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
     const googleProvider = new GoogleAuthProvider()
     const auth = getAuth(app)
-    // const axiosPublic = useAxiosPublic()
+    const axiosPublic = useAxiosPublic()
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
@@ -41,27 +42,27 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            // if (currentUser) {
-            //     //get token store client side
-            //     const userInfo = { email: currentUser.email }
-            //     axiosPublic.post('/jwt', userInfo)
-            //         .then(res => {
-            //             if (res.data) {
-            //                 localStorage.setItem('access-token', res.data.token)
-            //                 setLoading(false)
-            //             }
+            if (currentUser) {
+                //get token store client side
+                const userInfo = { email: currentUser.email }
+                axiosPublic.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data) {
+                            localStorage.setItem('access-token', res.data.token)
+                            setLoading(false)
+                        }
 
-            //         })
-            // }
-            // else {
-            //     localStorage.removeItem('access-token')
-            // }
+                    })
+            }
+            else {
+                localStorage.removeItem('access-token')
+            }
             setLoading(false)
             return () => {
                 return unsubscribe();
             }
         })
-    }, [ auth])
+    }, [auth, axiosPublic])
 
     const authInfo = {
         user,
