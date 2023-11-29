@@ -19,7 +19,8 @@ const WorkShitEmployee = () => {
         console.log(workHours, task, date)
         const employeeWorksheet = {
             workHours, task, date, email: user?.email,
-            image: user?.photoURL
+            image: user?.photoURL,
+            name:user?.name
         }
         axiosPublic.post('/worksheet', employeeWorksheet)
             .then(res => {

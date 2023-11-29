@@ -12,6 +12,9 @@ import ManageEmployee from "../pages/ManageEmployee/ManageEmployee";
 import PrivateRoute from "./PrivateRoute";
 import EmployeeDetails from "../pages/dashboard/EmployeeDetails/EmployeeDetails";
 import Payment from "../pages/dashboard/Payment/Payment";
+import SalaryHistory from "../pages/dashboard/SalaryHistory/SalaryHistory";
+import AllPaymentHistory from "../pages/dashboard/SalaryHistory/AllPaymentHistory";
+import Progress from "../pages/dashboard/Progress/Progress";
 
 const router = createBrowserRouter([
     {
@@ -66,8 +69,23 @@ const router = createBrowserRouter([
             }
             ,
             {
-                path: '/dashboard/payment',
-                element: <Payment></Payment>
+                path: '/dashboard/payment/:email',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/employee/${params.email}`)
+
+            },
+            {
+                path: '/dashboard/salaryHistory',
+                element: <SalaryHistory></SalaryHistory>
+            },
+            {
+                path:'/dashboard/allPaymentHistory',
+                element:<AllPaymentHistory></AllPaymentHistory>
+            }
+            ,
+            {
+                path:'/dashboard/progress',
+                element:<Progress></Progress>
             }
         ]
     }

@@ -3,17 +3,18 @@ import { useState, useEffect } from "react";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
 // import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import useAuth from "../../../hooks/useAuth";
 import Swal from 'sweetalert2';
+import { useLoaderData } from "react-router-dom";
 
 const CheckoutForm = () => {
+    const employeeData = useLoaderData()
+    console.log(employeeData.email)
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('')
     const [transactionId, setTransactionId] = useState('');
     const stripe = useStripe();
     const elements = useElements();
     const axiosPublic = useAxiosPublic();
-    const { user } = useAuth();
     // const navigate = useNavigate();
 
     const salary = 500000;
@@ -61,8 +62,9 @@ const CheckoutForm = () => {
             payment_method: {
                 card: card,
                 billing_details: {
-                    email: user?.email || 'anonymous',
-                    name: user?.displayName || 'anonymous'
+                    email: employeeData?.email || 'anonymous',
+                    name: employeeData?.displayName || 'anonymous'
+
                 }
             }
         })
@@ -78,8 +80,8 @@ const CheckoutForm = () => {
 
                 // now save the payment in the database
                 const payment = {
-                    email: user.email,
-                    price: salary,
+                    email: employeeData?.email,
+                    price: employeeData?.salary,
                     transactionId: paymentIntent.id,
                     date: new Date(), // utc date convert. use moment js to 
                     

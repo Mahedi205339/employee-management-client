@@ -9,7 +9,7 @@ const EmployeeDetails = () => {
     const [worksheetData, setWorksheetData] = useState()
     // const axiosPublic = useAxiosPublic()
     const employeeData = useLoaderData()
-    console.log(employeeData)
+    console.log(employeeData.email)
 
     useEffect(() => {
         fetch(`http://localhost:5000/worksheet/${employeeData.email}`)

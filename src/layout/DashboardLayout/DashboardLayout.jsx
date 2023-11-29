@@ -42,6 +42,33 @@ const DashboardLayout = () => {
                 <FaWpforms></FaWpforms>
                 Work Shit</NavLink>
         </li>
+        <li>
+            < NavLink
+                className={({ isActive }) =>
+                    isActive ? 'bg-blue-800 text-white' : ''
+                }
+                to="/dashboard/salaryHistory">
+                <FaWpforms></FaWpforms>
+                Salary History</NavLink>
+        </li>
+        <li>
+            < NavLink
+                className={({ isActive }) =>
+                    isActive ? 'bg-blue-800 text-white' : ''
+                }
+                to="/dashboard/allPaymentHistory">
+                <FaWpforms></FaWpforms>
+                Salary History</NavLink>
+        </li>
+        <li>
+            < NavLink
+                className={({ isActive }) =>
+                    isActive ? 'bg-blue-800 text-white' : ''
+                }
+                to="/dashboard/progress">
+                <FaWpforms></FaWpforms>
+                Progress</NavLink>
+        </li>
 
 
 
