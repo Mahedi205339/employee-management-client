@@ -20,8 +20,8 @@ const Login = () => {
         const form = event.target
         const email = form.email.value;
         const password = form.password.value;
-        if (!/[A-Z].{7}$/.test(password)) {
-            setError('Your password should have contain at least 8 character  Capital letter ')
+        if (password.length < 7 && /[A-Z]/.test(password)) {
+            setError('Your password should have contain at least 8 character & Capital letter ')
             return
         }
         console.log(email, password)

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // import { uploadImage } from "../../api/utils";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import useAuth from "../../hooks/useAuth";
@@ -13,17 +14,17 @@ const Registration = () => {
         const form = event.target;
         const name = form.name.value;
         const salary = form.salary.value;
-        const designation = form.designation.value;
         const accountNumber = form.accountNumber.value;
 
         const employeeData = {
-            name, accountNumber, designation, salary, image: user.photoURL,
+            name, accountNumber, salary, image: user.photoURL,
             verified: false,
+            designation: 'employee',
             email: user?.email
         }
         console.log(employeeData)
         try {
-            
+
             axiosPublic.post('/employee', employeeData)
                 .then(res => {
                     if (res.data.insertedId) {
@@ -49,7 +50,7 @@ const Registration = () => {
     return (
         <div className="max-w-5xl mx-auto p-5">
             <SectionTitle
-                heading={"Registration"}
+                heading={"Registration As Employee"}
             ></SectionTitle>
             <form onSubmit={handleRegistration}>
                 <div className="form-control w-full my-6">
@@ -65,19 +66,7 @@ const Registration = () => {
                 </div>
                 <div className="flex gap-6">
                     {/* Designation */}
-                    <div className="form-control w-full my-6">
-                        <label className="label">
-                            <span className="label-text">Designation*</span>
-                        </label>
-                        <select
-                            name="designation"
-                            className="select select-bordered w-full">
-                            <option disabled value="default">Select a category</option>
-                            <option value="admin">Admin</option>
-                            <option value="HR">HR</option>
-                            <option value="employee">Employee</option>
-                        </select>
-                    </div>
+
 
                     {/* salary */}
                     <div className="form-control w-full my-6">
@@ -105,19 +94,7 @@ const Registration = () => {
                         className="input input-bordered w-full" />
                 </div>
                 <div className="form-control w-full my-7">
-                    {/* <div>
-                        <label htmlFor='image' className='block mb-2 text-sm'>
-                            Select Image:
-                        </label>
-                        <input
-                            className="outline bg-black py-2 rounded-lg text-white"
-                            required
-                            type='file'
-                            id='image'
-                            name='image'
-                            accept='image/*'
-                        />
-                    </div> */}
+
                 </div>
 
 

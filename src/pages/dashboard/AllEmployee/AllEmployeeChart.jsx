@@ -1,16 +1,14 @@
 import { ImUserCheck } from "react-icons/im";
 import { FaUserTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-// import Swal from "sweetalert2";
-// import axios from "axios";
-const AllEmployeeChart = ({ employee, handleVerify }) => {
 
+const AllEmployeeChart = ({ employee, handleVerify }) => {
     const { email, name, salary, image, verified, designation, accountNumber, _id } = employee
     // console.log(employee)\\
 
 
     return (
-        <div className="card card-side p-6 sm:p-0 object-cover">
+        <div className="card md:card-side p-6 sm:p-0 object-cover">
             <div className="w-32">
                 <img className="rounded-full" src={image} alt="Movie" />
             </div>
@@ -24,7 +22,7 @@ const AllEmployeeChart = ({ employee, handleVerify }) => {
                 </p>
                 <p>Role:{designation}</p>
                 <p>Account No:{accountNumber}</p>
-                <div className="card-actions  justify-end">
+                <div className="card-actions  justify-center md:justify-end">
                     {
                         verified ?
                             <>
@@ -39,11 +37,26 @@ const AllEmployeeChart = ({ employee, handleVerify }) => {
                                 </button>
                             </>
                     }
-                    <Link to={`employeeDetails/${_id}`}>
-                        <button className=" bg-cyan-600 flex items-center text-white font-bold gap-1 px-2 py-1 rounded">
-                            Details
-                        </button>
-                    </Link>
+
+                    {
+                        designation == 'HR' ? '' : designation == 'admin' ? '' :
+                            <Link to={`/dashboard/employeeDetails/${email}`}>
+                                <button className=" bg-cyan-600 flex items-center text-white font-bold gap-1 px-2 py-1 rounded">
+                                    Details
+                                </button>
+                            </Link>
+                    }
+
+
+                    {
+                        designation == 'HR' ? '' : designation == 'admin' ? '' :
+                            <Link to="/dashboard/payment">
+                                <button
+                                    className=" bg-red-600 flex items-center text-white font-bold gap-1 px-2 py-1 rounded"
+                                >Pay Salary
+                                </button>
+                            </Link>
+                    }
                 </div>
             </div>
         </div>

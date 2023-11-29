@@ -23,8 +23,8 @@ const SignUp = () => {
         const password = form.password.value;
         const image = form.image.files[0]
         console.log(name, email, image)
-        if (!/[A-Z].{7}$/.test(password)) {
-            setError('Your password should have contain at least 8 character  Capital letter ')
+        if (password.length < 7 && /[A-Z]/.test(password)) {
+            setError('Your password should have contain at least 8 character & Capital letter ')
             return
         }
 
@@ -84,11 +84,11 @@ const SignUp = () => {
                 <div className="card flex-shrink-0 w-full  max-w-lg">
                     <div className='text-center text-2xl md:text-4xl font-bold lg:my-12'>
                         Sign Up
-                       
+
                     </div>
-                     {
-                            error && < p className="text-red-600 font-bold ">{error}</p>
-                        }
+                    {
+                        error && < p className="text-red-600 font-bold ">{error}</p>
+                    }
                     <form
                         onSubmit={handleSubmit}
                         className='space-y-6 ng-untouched ng-pristine ng-valid'

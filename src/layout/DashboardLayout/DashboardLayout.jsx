@@ -29,6 +29,15 @@ const DashboardLayout = () => {
                 className={({ isActive }) =>
                     isActive ? 'bg-blue-800 text-white' : ''
                 }
+                to="/dashboard/manageEmployee">
+                <IoHome></IoHome>
+                Manage Employee</NavLink>
+        </li>
+        <li>
+            < NavLink
+                className={({ isActive }) =>
+                    isActive ? 'bg-blue-800 text-white' : ''
+                }
                 to="/dashboard/work-shitForm">
                 <FaWpforms></FaWpforms>
                 Work Shit</NavLink>

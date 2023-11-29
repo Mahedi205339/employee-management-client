@@ -37,7 +37,7 @@ const WorkShitEmployee = () => {
 
     }
     return (
-        <div>
+        <div className="p-5">
             <SectionTitle
                 heading={`${user?.displayName}'s Work Shit`}
             ></SectionTitle>

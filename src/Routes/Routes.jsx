@@ -8,6 +8,10 @@ import DashboardLayout from "../layout/DashboardLayout/DashboardLayout";
 import Registration from "../pages/Registration/Registration";
 import AllEmployee from "../pages/dashboard/AllEmployee/AllEmployee";
 import WorkShitEmployee from "../pages/dashboard/WorkShitEmployee/WorkShitEmployee";
+import ManageEmployee from "../pages/ManageEmployee/ManageEmployee";
+import PrivateRoute from "./PrivateRoute";
+import EmployeeDetails from "../pages/dashboard/EmployeeDetails/EmployeeDetails";
+import Payment from "../pages/dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -21,11 +25,11 @@ const router = createBrowserRouter([
             ,
             {
                 path: '/contactUs',
-                element: <ContactUs></ContactUs>
+                element: <PrivateRoute><ContactUs></ContactUs></PrivateRoute>
             },
             {
                 path: '/registration',
-                element: <Registration></Registration>
+                element: <PrivateRoute><Registration></Registration></PrivateRoute>
             }
         ]
     }
@@ -48,8 +52,22 @@ const router = createBrowserRouter([
             }
             ,
             {
-                path:'/dashboard/work-shitForm',
-                element:<WorkShitEmployee></WorkShitEmployee>
+                path: '/dashboard/work-shitForm',
+                element: <WorkShitEmployee></WorkShitEmployee>
+            },
+            {
+                path: '/dashboard/manageEmployee',
+                element: <ManageEmployee></ManageEmployee>
+            },
+            {
+                path: '/dashboard/employeeDetails/:email',
+                element: <EmployeeDetails></EmployeeDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/employee/${params.email}`)
+            }
+            ,
+            {
+                path: '/dashboard/payment',
+                element: <Payment></Payment>
             }
         ]
     }
