@@ -37,17 +37,6 @@ const AllEmployeeChart = ({ employee, handleVerify }) => {
                                 </button>
                             </>
                     }
-
-                    {
-                        designation == 'HR' ? '' : designation == 'admin' ? '' :
-                            <Link to={`/dashboard/employeeDetails/${email}`}>
-                                <button className=" bg-cyan-600 flex items-center text-white font-bold gap-1 px-2 py-1 rounded">
-                                    Details
-                                </button>
-                            </Link>
-                    }
-
-
                     {
                         designation == 'HR' ? '' : designation == 'admin' ? '' :
                             <Link to={`/dashboard/payment/${email}`}>

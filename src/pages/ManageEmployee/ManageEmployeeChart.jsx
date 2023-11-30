@@ -20,14 +20,6 @@ const ManageEmployeeChart = ({ employee, handleFired, handleMakeHR }) => {
                     <p className="text-xl font-bold">Role :{designation}</p>
                     <p>Account No:{accountNumber}</p>
                     <div className="card-actions  justify-end">
-                        {
-                            designation == 'admin' ? '' :
-
-                                <button className=" bg-cyan-600 flex items-center text-white font-bold gap-1 px-2 py-1 rounded">
-                                    Details
-                                </button>
-
-                        }
 
                         {
                             designation == 'admin' ? '' :

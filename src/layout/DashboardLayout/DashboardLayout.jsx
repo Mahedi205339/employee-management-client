@@ -4,9 +4,139 @@ import DropdownMenu from "../../pages/Home/Navbar/DropdownMenu";
 import logo from '../../assets/logo.png'
 import { IoHome } from "react-icons/io5";
 import { FaWpforms } from "react-icons/fa";
+import useAdmin from "../../hooks/useAdmin";
+import useHR from "../../hooks/useHR";
 const DashboardLayout = () => {
+
+    const [isAdmin] = useAdmin()
+    console.log(isAdmin)
+    const [isHR] = useHR()
+    console.log(isHR)
+
+
     const navLinks = <>
-        <li>
+        {
+            isAdmin ? <>
+                <li>
+                    < NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'bg-blue-800 text-white' : ''
+                        }
+                        to="/">
+                        <IoHome></IoHome>
+                        Home</NavLink>
+                </li>
+                <li>
+                    < NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'bg-blue-800 text-white' : ''
+                        }
+                        to="/dashboard/allEmployee">
+                        <IoHome></IoHome>
+                        All Employee</NavLink>
+                </li>
+                <li>
+                    < NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'bg-blue-800 text-white' : ''
+                        }
+                        to="/dashboard/manageEmployee">
+                        <IoHome></IoHome>
+                        Manage Employee</NavLink>
+                </li>
+                <li>
+                    < NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'bg-blue-800 text-white' : ''
+                        }
+                        to="/dashboard/progress">
+                        <FaWpforms></FaWpforms>
+                        Progress</NavLink>
+                </li>
+                <li>
+                    < NavLink
+                        className={({ isActive }) =>
+                            isActive ? 'bg-blue-800 text-white' : ''
+                        }
+                        to="/dashboard/allPaymentHistory">
+                        <FaWpforms></FaWpforms>
+                        Payment History</NavLink>
+                </li>
+
+            </> :
+                isHR ? <>
+                    <li>
+                        < NavLink
+                            className={({ isActive }) =>
+                                isActive ? 'bg-blue-800 text-white' : ''
+                            }
+                            to="/">
+                            <IoHome></IoHome>
+                            Home</NavLink>
+                    </li>
+                    <li>
+                        < NavLink
+                            className={({ isActive }) =>
+                                isActive ? 'bg-blue-800 text-white' : ''
+                            }
+                            to="/dashboard/allEmployee">
+                            <IoHome></IoHome>
+                            All Employee</NavLink>
+                    </li>
+                    <li>
+                        < NavLink
+                            className={({ isActive }) =>
+                                isActive ? 'bg-blue-800 text-white' : ''
+                            }
+                            to="/dashboard/progress">
+                            <FaWpforms></FaWpforms>
+                            Progress</NavLink>
+                    </li>
+                    < li>
+                        < NavLink
+                            className={({ isActive }) =>
+                                isActive ? 'bg-blue-800 text-white' : ''
+                            }
+                            to="/dashboard/allPaymentHistory">
+                            <FaWpforms></FaWpforms>
+                            Payment History</NavLink>
+                    </li>
+                </> :
+
+                    <>
+                        <li>
+                            < NavLink
+                                className={({ isActive }) =>
+                                    isActive ? 'bg-blue-800 text-white' : ''
+                                }
+                                to="/">
+                                <IoHome></IoHome>
+                                Home</NavLink>
+                        </li>
+                        <li>
+                            < NavLink
+                                className={({ isActive }) =>
+                                    isActive ? 'bg-blue-800 text-white' : ''
+                                }
+                                to="/dashboard/work-shitForm">
+                                <FaWpforms></FaWpforms>
+                                Work Shit</NavLink>
+                        </li>
+                        <li>
+                            < NavLink
+                                className={({ isActive }) =>
+                                    isActive ? 'bg-blue-800 text-white' : ''
+                                }
+                                to="/dashboard/salaryHistory">
+                                <FaWpforms></FaWpforms>
+                                Salary History</NavLink>
+                        </li>
+
+
+                    </>
+        }
+
+        {/* <li>
             < NavLink
                 className={({ isActive }) =>
                     isActive ? 'bg-blue-800 text-white' : ''
@@ -58,7 +188,7 @@ const DashboardLayout = () => {
                 }
                 to="/dashboard/allPaymentHistory">
                 <FaWpforms></FaWpforms>
-                Salary History</NavLink>
+                Payment History</NavLink>
         </li>
         <li>
             < NavLink
@@ -68,7 +198,7 @@ const DashboardLayout = () => {
                 to="/dashboard/progress">
                 <FaWpforms></FaWpforms>
                 Progress</NavLink>
-        </li>
+        </li> */}
 
 
 

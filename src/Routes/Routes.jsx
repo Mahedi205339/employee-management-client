@@ -10,7 +10,6 @@ import AllEmployee from "../pages/dashboard/AllEmployee/AllEmployee";
 import WorkShitEmployee from "../pages/dashboard/WorkShitEmployee/WorkShitEmployee";
 import ManageEmployee from "../pages/ManageEmployee/ManageEmployee";
 import PrivateRoute from "./PrivateRoute";
-import EmployeeDetails from "../pages/dashboard/EmployeeDetails/EmployeeDetails";
 import Payment from "../pages/dashboard/Payment/Payment";
 import SalaryHistory from "../pages/dashboard/SalaryHistory/SalaryHistory";
 import AllPaymentHistory from "../pages/dashboard/SalaryHistory/AllPaymentHistory";
@@ -61,13 +60,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manageEmployee',
                 element: <ManageEmployee></ManageEmployee>
-            },
-            {
-                path: '/dashboard/employeeDetails/:email',
-                element: <EmployeeDetails></EmployeeDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/employee/${params.email}`)
-            }
-            ,
+            },           
             {
                 path: '/dashboard/payment/:email',
                 element: <Payment></Payment>,
@@ -79,13 +72,13 @@ const router = createBrowserRouter([
                 element: <SalaryHistory></SalaryHistory>
             },
             {
-                path:'/dashboard/allPaymentHistory',
-                element:<AllPaymentHistory></AllPaymentHistory>
+                path: '/dashboard/allPaymentHistory',
+                element: <AllPaymentHistory></AllPaymentHistory>
             }
             ,
             {
-                path:'/dashboard/progress',
-                element:<Progress></Progress>
+                path: '/dashboard/progress',
+                element: <Progress></Progress>
             }
         ]
     }

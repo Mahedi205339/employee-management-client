@@ -1,31 +1,33 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllPaymentHistory = () => {
-    const axiosPublic = useAxiosPublic()
+    // const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const { data: Payments = [] } = useQuery({
         queryKey: ['payments'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/payments')
+            const res = await axiosSecure.get('/payments')
             return res.data;
         }
     })
     return (
         <div>
             <Helmet>
-                <title>Employee management | Payment</title>
+                <title>Employee management | Payments</title>
                 <link rel="canonical" href="https://www.tacobell.com/" />
             </Helmet>
             <SectionTitle
-            heading={"Your salary history"}
+                heading={"All salary history"}
             ></SectionTitle>
             <div>
-            <Helmet>
-                <title>Employee management | Salary History</title>
-                <link rel="canonical" href="https://www.tacobell.com/" />
-            </Helmet>
+                <Helmet>
+                    <title>Employee management | Salary History</title>
+                    <link rel="canonical" href="https://www.tacobell.com/" />
+                </Helmet>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">
                         {/* head */}

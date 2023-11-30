@@ -1,27 +1,34 @@
-import { useEffect, useState } from "react";
-
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { useLoaderData } from "react-router-dom";
-// import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+// import { useEffect, useState } from "react";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 
 const EmployeeDetails = () => {
-    const [worksheetData, setWorksheetData] = useState()
-    // const axiosPublic = useAxiosPublic()
+
+    const axiosPublic = useAxiosPublic()
     const employeeData = useLoaderData()
-    console.log(employeeData.email)
+    console.log(employeeData)
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/worksheet/${employeeData.email}`)
-            .then(res => res.json())
-            .then(data => setWorksheetData(data))
-    }, [employeeData])
-
-
+    const { data: worksheetData = [] } = useQuery({
+        queryKey: ['employees'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/worksheet`)
+            return res.data;
+        }
+    })
     console.log(worksheetData)
-
     return (
         <div>
+            <SectionTitle
+                heading={"Employee Details"}
+            ></SectionTitle>
+            <div>
+
+
+            </div>
+
 
         </div>
     );

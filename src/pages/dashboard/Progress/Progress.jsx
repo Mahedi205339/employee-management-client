@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import { Helmet } from "react-helmet";
 
 
 const Progress = () => {
@@ -14,7 +16,15 @@ const Progress = () => {
     console.log(worksheets)
     return (
         <div>
-             <div className="overflow-x-auto">
+            <SectionTitle
+                heading={"Employee Work Progress"}
+            ></SectionTitle>
+            <div>
+                <Helmet>
+                    <title>Employee management | Progress</title>
+                    <link rel="canonical" href="https://www.tacobell.com/" />
+                </Helmet>
+                <div className="overflow-x-auto my-6">
                     <table className="table table-zebra">
                         {/* head */}
                         <thead>
@@ -46,7 +56,7 @@ const Progress = () => {
                         </tbody>
                     </table>
                 </div>
-
+            </div>
         </div>
     );
 };
