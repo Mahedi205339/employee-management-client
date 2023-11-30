@@ -65,8 +65,7 @@ const Registration = () => {
                         className="input input-bordered w-full" />
                 </div>
                 <div className="flex gap-6">
-                    {/* Designation */}
-
+                
 
                     {/* salary */}
                     <div className="form-control w-full my-6">
