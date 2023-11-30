@@ -14,11 +14,14 @@ import Payment from "../pages/dashboard/Payment/Payment";
 import SalaryHistory from "../pages/dashboard/SalaryHistory/SalaryHistory";
 import AllPaymentHistory from "../pages/dashboard/SalaryHistory/AllPaymentHistory";
 import Progress from "../pages/dashboard/Progress/Progress";
+import AdminRoute from "./AdminRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Layout></Layout>,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -46,7 +49,8 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement:<ErrorPage></ErrorPage> ,
         children: [
             {
                 path: '/dashboard/allEmployee',
@@ -59,8 +63,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/manageEmployee',
-                element: <ManageEmployee></ManageEmployee>
-            },           
+                element: <AdminRoute><ManageEmployee></ManageEmployee></AdminRoute>
+            },
             {
                 path: '/dashboard/payment/:email',
                 element: <Payment></Payment>,

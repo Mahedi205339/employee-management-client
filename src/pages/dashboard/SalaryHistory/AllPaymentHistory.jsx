@@ -1,11 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-// import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllPaymentHistory = () => {
-    // const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const { data: Payments = [] } = useQuery({
         queryKey: ['payments'],

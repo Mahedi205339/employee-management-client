@@ -31,7 +31,7 @@ const WorkShitEmployee = () => {
         Swal.fire({
             position: "center",
             icon: "success",
-            title: "Successfully Signed in",
+            title: "Successfully data sent",
             showConfirmButton: false,
             timer: 1500
         });

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const AllEmployeeChart = ({ employee, handleVerify }) => {
     const { email, name, salary, image, verified, designation, accountNumber, _id } = employee
-    // console.log(employee)\\
+
 
 
     return (

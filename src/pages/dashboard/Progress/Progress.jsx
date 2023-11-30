@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const Progress = () => {
-    const axiosPublic = useAxiosPublic()
+
+    const axiosSecure = useAxiosSecure()
     const { data: worksheets = [] } = useQuery({
         queryKey: ['worksheet'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/worksheet`)
+            const res = await axiosSecure.get(`/worksheet`)
             return res.data;
         }
     })

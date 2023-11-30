@@ -1,15 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-// import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
 import Container from "../../../components/Container/Container";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Helmet } from "react-helmet";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-// import SalaryTable from "./SalaryTable";
 
 const SalaryHistory = () => {
     const { user } = useAuth()
-    // const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const { data: Payments = [] } = useQuery({
         queryKey: ['payments'],

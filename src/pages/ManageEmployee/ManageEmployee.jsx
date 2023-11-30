@@ -2,11 +2,9 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import ManageEmployeeChart from "./ManageEmployeeChart";
 import Swal from 'sweetalert2';
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 const ManageEmployee = () => {
     const axiosSecure = useAxiosSecure()
-    // const axiosPublic = useAxiosPublic()
     const { data: employees = [], refetch } = useQuery({
         queryKey: ['employees'],
         queryFn: async () => {

@@ -5,14 +5,16 @@ import { useState, useEffect } from "react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from 'sweetalert2';
 import { useLoaderData } from "react-router-dom";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const CheckoutForm = () => {
     const employeeData = useLoaderData()
-    console.log(employeeData.email)
+    console.log(employeeData)
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('')
     const [transactionId, setTransactionId] = useState('');
     const stripe = useStripe();
+    // const axiosSecure =useAxiosSecure()
     const elements = useElements();
     const axiosPublic = useAxiosPublic();
     // const navigate = useNavigate();
