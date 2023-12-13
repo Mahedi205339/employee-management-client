@@ -3,7 +3,7 @@ import Container from "../../components/Container/Container";
 import DropdownMenu from "../../pages/Home/Navbar/DropdownMenu";
 import logo from '../../assets/logo.png'
 import { IoHome } from "react-icons/io5";
-import { FaWpforms } from "react-icons/fa";
+import { FaChartLine, FaUserCog, FaUserTie, FaWpforms } from "react-icons/fa";
 import useAdmin from "../../hooks/useAdmin";
 import useHR from "../../hooks/useHR";
 const DashboardLayout = () => {
@@ -32,7 +32,7 @@ const DashboardLayout = () => {
                             isActive ? 'bg-blue-800 text-white' : ''
                         }
                         to="/dashboard/allEmployee">
-                        <IoHome></IoHome>
+                        <FaUserTie />
                         All Employee</NavLink>
                 </li>
                 <li>
@@ -41,7 +41,7 @@ const DashboardLayout = () => {
                             isActive ? 'bg-blue-800 text-white' : ''
                         }
                         to="/dashboard/manageEmployee">
-                        <IoHome></IoHome>
+                        <FaUserCog />
                         Manage Employee</NavLink>
                 </li>
                 <li>
@@ -50,7 +50,7 @@ const DashboardLayout = () => {
                             isActive ? 'bg-blue-800 text-white' : ''
                         }
                         to="/dashboard/progress">
-                        <FaWpforms></FaWpforms>
+                        <FaChartLine />
                         Progress</NavLink>
                 </li>
                 <li>
@@ -80,7 +80,7 @@ const DashboardLayout = () => {
                                 isActive ? 'bg-blue-800 text-white' : ''
                             }
                             to="/dashboard/allEmployee">
-                            <IoHome></IoHome>
+                             <FaUserTie />
                             All Employee</NavLink>
                     </li>
                     <li>
@@ -89,7 +89,7 @@ const DashboardLayout = () => {
                                 isActive ? 'bg-blue-800 text-white' : ''
                             }
                             to="/dashboard/progress">
-                            <FaWpforms></FaWpforms>
+                            <FaChartLine />
                             Progress</NavLink>
                     </li>
                     < li>

@@ -68,7 +68,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:email',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/employee/${params.email}`)
+                loader: ({ params }) => fetch(`https://y-beige-two.vercel.app/employee/${params.email}`)
 
             },
             {

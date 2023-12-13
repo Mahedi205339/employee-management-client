@@ -1,11 +1,12 @@
 import { ImUserCheck } from "react-icons/im";
 import { FaUserTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+// import Swal from 'sweetalert2'
 
 const AllEmployeeChart = ({ employee, handleVerify }) => {
     const { email, name, salary, image, verified, designation, accountNumber, _id } = employee
 
-
+console.log(verified);
 
     return (
         <div className="card md:card-side p-6 sm:p-0 object-cover">
@@ -38,13 +39,13 @@ const AllEmployeeChart = ({ employee, handleVerify }) => {
                             </>
                     }
                     {
-                        designation == 'HR' ? '' : designation == 'admin' ? '' :
+                        designation == 'HR' ? '' : designation == 'admin' ? '' :verified?
                             <Link to={`/dashboard/payment/${email}`}>
                                 <button
                                     className=" bg-red-600 flex items-center text-white font-bold gap-1 px-2 py-1 rounded"
                                 >Pay Salary
                                 </button>
-                            </Link>
+                            </Link>:''
                     }
                 </div>
             </div>
